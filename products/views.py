@@ -1,19 +1,19 @@
-from django.shortcuts import render
 from rest_framework import generics
 from .models import Product, ProductCategory
 from .serializers import ProductCategorySerializer, ProductSerializer
-from drf_spectacular.utils import extend_schema, extend_schema_view
+from drf_spectacular.utils import extend_schema
 
 """
 CRUD для категорий
 """
 
+
 @extend_schema(
-        tags=['Категории'],
-        description="Получить информацию о всех категориях",
-        summary="Получение всех категорий",
-        responses={200: ProductCategorySerializer}
-    )
+    tags=['Категории'],
+    description="Получить информацию о всех категориях",
+    summary="Получение всех категорий",
+    responses={200: ProductCategorySerializer}
+)
 class ListProductCategoryView(generics.ListAPIView):
     queryset = ProductCategory.objects.all()
     serializer_class = ProductCategorySerializer
@@ -61,12 +61,13 @@ class ProductCategoryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPI
     def delete(self, request, *args, **kwargs):
         return super().delete(request, *args, **kwargs)
 
+
 @extend_schema(
     tags=['Категории'],
     description="Создать новую категорию продукта",
     summary="Создание категории продукта",
-    request=ProductCategorySerializer,  # Ожидаемое тело запроса
-    responses={201: ProductCategorySerializer}  # Ожидаемый ответ
+    request=ProductCategorySerializer,
+    responses={201: ProductCategorySerializer}
 )
 class ListCreateProductCategoryView(generics.CreateAPIView):
     queryset = ProductCategory.objects.all()
@@ -82,7 +83,7 @@ CRUD для продуктов
     tags=['Продукты'],
     description="Получить список всех продуктов с возможностью фильтрации и пагинации.",
     summary="Список продуктов",
-    responses={200: ProductSerializer(many=True)},  # Ответ с несколькими продуктами
+    responses={200: ProductSerializer(many=True)},
 )
 class ListProductView(generics.ListAPIView):
     queryset = Product.objects.all()
@@ -137,7 +138,7 @@ class ProductRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     description="Получить список всех продуктов и создать новый продукт.",
     summary="Список и создание продуктов",
     responses={
-        201: ProductSerializer  # Ответ после создания продукта
+        201: ProductSerializer
     }
 )
 class ProductListCreateView(generics.CreateAPIView):
