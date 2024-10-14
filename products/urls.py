@@ -5,10 +5,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('product_categories/', ListProductCategoryView.as_view(), name='categories-list-create'),
-    path('product_categories/<int:pk>/', ProductCategoryRetrieveUpdateDestroyView.as_view(), name='categories-detail'),
+    path('product_category/<int:pk>/', ProductCategoryRetrieveUpdateDestroyView.as_view(), name='categories-detail'),
     path('create_product_categories/', ListCreateProductCategoryView.as_view(), name='categories-list'),
     path('create_products/', ProductListCreateView.as_view(), name='product-list-create'),
-    path('products/<int:pk>/', ProductRetrieveUpdateDestroyView.as_view(), name='product-detail'),
+    path('product/<int:pk>/', ProductRetrieveUpdateDestroyView.as_view(), name='product-detail'),
     path('products/', ListProductView.as_view(), name='products-list')
 ]
 if settings.DEBUG:

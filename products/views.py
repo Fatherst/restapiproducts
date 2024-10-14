@@ -9,6 +9,7 @@ CRUD для категорий
 """
 
 @extend_schema(
+        tags=['Категории'],
         description="Получить информацию о всех категориях",
         summary="Получение всех категорий",
         responses={200: ProductCategorySerializer}
@@ -23,6 +24,7 @@ class ProductCategoryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPI
     serializer_class = ProductCategorySerializer
 
     @extend_schema(
+        tags=['Категории'],
         description="Получить информацию о категории по её ID",
         summary="Получение категории",
         responses={200: ProductCategorySerializer}
@@ -31,6 +33,7 @@ class ProductCategoryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPI
         return super().get(request, *args, **kwargs)
 
     @extend_schema(
+        tags=['Категории'],
         description="Обновить категорию по её ID",
         summary="Обновление категории",
         request=ProductCategorySerializer,
@@ -40,6 +43,7 @@ class ProductCategoryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPI
         return super().put(request, *args, **kwargs)
 
     @extend_schema(
+        tags=['Категории'],
         description="Обновить категорию по её ID",
         summary="Обновление категории",
         request=ProductCategorySerializer,
@@ -49,6 +53,7 @@ class ProductCategoryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPI
         return super().put(request, *args, **kwargs)
 
     @extend_schema(
+        tags=['Категории'],
         description="Удалить категорию по её ID",
         summary="Удаление категории",
         responses={204: None}
@@ -57,6 +62,7 @@ class ProductCategoryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPI
         return super().delete(request, *args, **kwargs)
 
 @extend_schema(
+    tags=['Категории'],
     description="Создать новую категорию продукта",
     summary="Создание категории продукта",
     request=ProductCategorySerializer,  # Ожидаемое тело запроса
@@ -73,6 +79,7 @@ CRUD для продуктов
 
 
 @extend_schema(
+    tags=['Продукты'],
     description="Получить список всех продуктов с возможностью фильтрации и пагинации.",
     summary="Список продуктов",
     responses={200: ProductSerializer(many=True)},  # Ответ с несколькими продуктами
@@ -87,6 +94,7 @@ class ProductRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductSerializer
 
     @extend_schema(
+        tags=['Продукты'],
         description="Получить информацию о продукте по его ID",
         summary="Получение продукта",
         responses={200: ProductSerializer}
@@ -95,6 +103,7 @@ class ProductRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
         return super().get(request, *args, **kwargs)
 
     @extend_schema(
+        tags=['Продукты'],
         description="Обновить продукт по его ID",
         summary="Обновление продукта",
         request=ProductSerializer,
@@ -104,6 +113,7 @@ class ProductRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
         return super().put(request, *args, **kwargs)
 
     @extend_schema(
+        tags=['Продукты'],
         description="Обновить продукт по его ID",
         summary="Обновление продукта",
         request=ProductSerializer,
@@ -113,6 +123,7 @@ class ProductRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
         return super().put(request, *args, **kwargs)
 
     @extend_schema(
+        tags=['Продукты'],
         description="Удалить продукт по его ID",
         summary="Удаление продукта",
         responses={204: None}
@@ -122,6 +133,7 @@ class ProductRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 
 
 @extend_schema(
+    tags=['Продукты'],
     description="Получить список всех продуктов и создать новый продукт.",
     summary="Список и создание продуктов",
     responses={
